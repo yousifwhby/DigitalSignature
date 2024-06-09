@@ -1,0 +1,47 @@
+<div class="upload-file-container">
+	<!-- <div class="main-selection signature">
+		<input type="file" (change)="onFileChange($event)" class="form-control" />
+		<div class="title">Signature</div>
+	</div> -->
+	<div class="drag-drop-box signature" drag-drop (filesChangeEmiter)="onFileChangeMain($event)">
+		<div class="text-wrapper">
+			<ng-container *ngIf="imageMainUrl; else elseBlock">
+				<img [src]="imageMainUrl" class="preview-image centered" />
+			</ng-container>
+			<ng-template #elseBlock>
+				<div class="centered">
+					<input type="file" name="file" id="file" accept=".csv" #fileInput multiple />
+					<label for="file" class="mb-3"><span class="textLink">Upload file</span> ...or drag file here.</label>
+					<br />
+					<!-- <label *ngIf="UploadedFile">
+					You have uploaded file <b>{{ContactImportData.FileName}}</b>, size <b>{{ContactImportData.FileSize}}</b>, and
+					<b>{{ContactImportData.RowsCount}}</b> rows
+				</label> -->
+				</div>
+			</ng-template>
+		</div>
+	</div>
+
+	<!-- <div class="main-selection initials">
+		<input type="file" (change)="onFileChange($event)" class="form-control" />
+		<div class="title">Initials</div>
+	</div> -->
+	<div class="drag-drop-box initials" drag-drop (filesChangeEmiter)="onFileChangeInatials($event)">
+		<div class="text-wrapper">
+			<ng-container *ngIf="imageInatailsUrl; else elseBlock">
+				<img [src]="imageInatailsUrl" class="preview-image centered" />
+			</ng-container>
+			<ng-template #elseBlock>
+				<div class="centered">
+					<input type="file" name="file" id="file" accept=".csv" #fileInput multiple />
+					<label for="file" class="mb-3"><span class="textLink">Upload file</span> ...or drag file here.</label>
+					<br />
+					<!-- <label *ngIf="UploadedFile">
+						You have uploaded file <b>{{ContactImportData.FileName}}</b>, size <b>{{ContactImportData.FileSize}}</b>, and
+						<b>{{ContactImportData.RowsCount}}</b> rows
+					</label> -->
+				</div>
+			</ng-template>
+		</div>
+	</div>
+</div>

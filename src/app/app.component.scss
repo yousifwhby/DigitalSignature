@@ -1,26 +1,103 @@
 // :host {
-//   display: block;
-//   padding: 20px;
+// 	display: block;
+// 	padding: 20px;
 // }
 
+$main-color: rgb(65, 65, 123);
+$secondary-color: grey;
+.title {
+	height: 50px;
+	background-color: blue;
+	padding: 20px 0;
+}
+.tabs {
+	padding: 20px;
+	margin-top: 20px;
+
+	.tabs-header {
+		width: 100%;
+		max-width: none;
+
+		.nav {
+			.nav-item {
+				.nav-link {
+					font-weight: bold;
+					&.active {
+						background-color: transparent;
+						border-radius: 0;
+						color: $main-color;
+						border-bottom: 3px solid $main-color;
+					}
+				}
+			}
+		}
+	}
+
+	.tabs-body {
+		margin-top: 20px;
+		padding: 20px;
+
+		width: 100%;
+		max-width: none;
+		border-top: 1px solid $secondary-color;
+		border-bottom: 1px solid $secondary-color;
+
+		.current-tab {
+			padding: 0;
+
+			.fonts {
+				.inputs {
+					display: flex;
+					input {
+						margin: 0 5px;
+					}
+				}
+
+				.table {
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+
+	.tabs-footer {
+		padding: 20px 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.agree {
+			span {
+				font-weight: bold;
+				margin-inline-start: 10px;
+			}
+		}
+	}
+}
+
 // table {
-//   width: 100%;
-//   border-collapse: collapse;
-//   margin-top: 20px;
+// 	width: 100%;
+// 	border-collapse: collapse;
+// 	margin-top: 20px;
 // }
 
 // th,
 // td {
-//   border: 1px solid #745f5f;
-//   text-align: left;
-//   padding: 8px;
+// 	border: 1px solid #745f5f;
+// 	text-align: left;
+// 	padding: 8px;
 // }
 
 // th {
-//   background-color: #bb1a1a;
+// 	background-color: #3f3b3b;
 // }
 
-// img {
-//   max-width: 100%;
-//   margin-top: 20px;
-// }
+img {
+	max-width: 100%;
+	margin-top: 20px;
+}
+.table-container {
+	height: 300px; /* Fixed height, adjust as needed */
+	overflow-y: auto;
+	width: 100%;
+}

@@ -1,0 +1,44 @@
+.canvas-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	.main-selection {
+		border: 1px dashed black;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		padding: 20px;
+
+		canvas {
+			border-bottom: 4px solid black;
+			padding-bottom: 20px;
+			// height: 300px;
+
+			&.signature {
+				// width: 600px;
+			}
+
+			&.initials {
+				// width: 300px;
+			}
+		}
+
+		button {
+			position: absolute;
+			top: 0;
+			right: 0;
+			background-color: transparent;
+			color: blue;
+			border: 0;
+		}
+
+		.title {
+			text-align: start;
+		}
+		.controls {
+			display: flex;
+			margin-top: 10px; /* Optional spacing between controls and canvas */
+		}
+	}
+}

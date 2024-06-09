@@ -1,0 +1,23 @@
+<div class="canvas-container">
+	<div class="main-selection">
+		<canvas #drawingCanvas class="signature" width="600px" height="300px"></canvas>
+		<button (click)="clearDrawingCanvas()">Clear Canvas</button>
+		<div class="title">Draw Signature</div>
+		<div class="controls">
+			<input type="color" #colorPickerMain (change)="changeColorMain(colorPickerMain?.value)" />
+			<input type="range" min="5" max="90" [(ngModel)]="lineWidthMainSig" />
+		</div>
+	</div>
+
+	<div class="main-selection">
+		<canvas #initialsCanvas class="initials" width="300px" height="300px"></canvas>
+		<button (click)="clearInatialsCanvas()">Clear Canvas</button>
+		<div class="title">Initials</div>
+		<div class="controls">
+			<input type="color" #colorPickerIatials (change)="changeColorInatials(colorPickerIatials?.value)" />
+			<input type="range" min="5" max="90" [(ngModel)]="lineWidthInatialSig" />
+		</div>
+
+		<!-- <div class="viewer" #viewer></div> -->
+	</div>
+</div>

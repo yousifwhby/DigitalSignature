@@ -1,14 +1,94 @@
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
-  </li>
-</ul>
+<!-- tab-component.component.html -->
+
+<div class="title">
+	<button class="btn"><i class="fa fa-chevron-left"></i></button>
+	Create Signature
+</div>
+
+<div class="tabs">
+	<div class="container tabs-header">
+		<div class="row justify-content-center">
+			<ul class="nav nav-pills">
+				<li class="nav-item">
+					<a class="nav-link" [class.active]="activeTab === 'Fonts'" href="#" (click)="activeTab = 'Fonts'">Fonts</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [class.active]="activeTab === 'Draw'" href="#" (click)="activeTab = 'Draw'">Draw</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [class.active]="activeTab === 'Upload'" href="#" (click)="activeTab = 'Upload'">Upload</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container tabs-body">
+		<div class="row justify-content-center">
+			<div class="current-tab" *ngIf="activeTab === 'Fonts'">
+				<!-- Fonts tab content -->
+				<div class="fonts">
+					<div class="inputs">
+						<input
+							type="text"
+							class="form-control"
+							placeholder="Font Name"
+							name="search"
+							(keyup)="filterFont(searchText)"
+							[(ngModel)]="searchText" />
+						<input type="text" class="form-control" placeholder="initials" name="initials" [(ngModel)]="demoInatals" />
+						<input type="text" class="form-control" placeholder="full name" name="full-name" [(ngModel)]="demoFullName" />
+					</div>
+					<!-- Table to display fonts -->
+					<table class="table table-striped table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>Select</th>
+
+								<th>Font Name</th>
+								<th>Demo Inatials</th>
+								<th>Demo FullName</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Use ngFor to dynamically display fonts -->
+							<tr *ngFor="let font of filteredFonts">
+								<td><input type="checkbox" [(ngModel)]="font.selected" /></td>
+								<td [style.font-family]="font.name">{{ font.name }}</td>
+								<td [style.font-family]="font.name">{{ demoInatals }}</td>
+								<td [style.font-family]="font.name">{{ demoFullName }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="current-tab" *ngIf="activeTab === 'Draw'">
+				<!-- Draw tab content -->
+				<div class="text-center">
+					<!-- Drawing canvas -->
+					<app-canves-signature [Create]="Tabs.Draw" (onCreate)="onCanvasCreate($event)"></app-canves-signature>
+					<!-- Final view of the drawing -->
+				</div>
+			</div>
+
+			<div class="current-tab" *ngIf="activeTab === 'Upload'">
+				<!-- Upload tab content -->
+				<div>
+					<app-upload-file [Create]="Tabs.Upload" (onImagesCreated)="onUploadCreate($event)"></app-upload-file>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="tabs-footer">
+		<div class="agree">
+			<input type="checkbox" name="" id="agree" (change)="updateButtonState()" />
+			<span>I Agree</span>
+		</div>
+
+		<div class="actions">
+			<button class="btn btn-outline-primary">Close</button>
+			<button class="btn btn-primary ms-3" (click)="onCreate()" [disabled]="!isAgreed">Create</button>
+		</div>
+	</div>
+</div>
